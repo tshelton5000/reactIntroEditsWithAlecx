@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 const getTimeString = () => {
     const date = new Date(Date.now()).toLocaleTimeString();
-    console.log(date);
+    // console.log(date);
     return date;
 }
 
