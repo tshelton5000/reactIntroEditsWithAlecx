@@ -40,11 +40,11 @@ const PropsDemo = () => {
         <div className="main">
             <div className="mainDiv">
                 <div style={ styles }>
-                    <FunctionalComponent string="will this display?"  />
+                    <FunctionalComponent string="will this display?" function={ toggleColor } selectedStyle={ color } />
                     {/* challenge one answer */}
-                    <FunctionalComponent   />
-                    <FunctionalComponent  />
-                    <FunctionalComponent  />
+                    <FunctionalComponent string="Props are pretty cool right?" function={ toggleBackgroundColor } selectedStyle={ backgroundColor }/>
+                    <FunctionalComponent string="You can send data from one component ..." function={ toggleBorderRadius } selectedStyle={ borderRadius } />
+                    <FunctionalComponent string=" ... to another!" function={ toggleBorderStyle } selectedStyle={ borderStyle } />
                 </div>
             </div>
         </div>
@@ -66,8 +66,13 @@ FunctionalComponent.defaultProps = {
     string : 'This is wild!!',
     function : () => console.log('will this work?'),
     selectedStyle : 'what is style?'
-}
+};
 
+FunctionalComponent.propTypes = {
+    string : PropTypes.string.isRequired,
+    function : PropTypes.func.isRequired,
+    selectedStyle : PropTypes.string.isRequired
+};
 
 const TinyComponent = (props) => {
     return (
