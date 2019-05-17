@@ -6,15 +6,15 @@ const key = 'yourKeyHereabc123def456ghi789jkl0';
 
 const NytApp = () => {
   const [ search, setSearch ] = useState('');
-  const [ stateDate, setStartDate ] = useState('');
+  const [ startDate, setStartDate ] = useState('');
   const [ endDate, setEndDate ] = useState('');
   const [ pageNumber, setPageNumber ] = useState(0);
   const [ results, setResults ] = useState([]); 
 
-  fetchResults = () => {
-    let url = `${baseURL}?api-key=${key}&page=${this.state.pageNumber}&q=${this.state.search}`;
-    url = this.state.startDate ? url + `&begin_date=${this.state.startDate}` : url;
-    url = this.state.endDate ? url + `&end_date=${this.state.endDate}` : url;
+  const fetchResults = () => {
+    let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${search}`;
+    url = startDate ? url + `&begin_date=${startDate}` : url;
+    url = endDate ? url + `&end_date=${endDate}` : url;
 
     fetch(url)
       .then(res => res.json())
@@ -22,13 +22,13 @@ const NytApp = () => {
       .catch(err => console.log(err));
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setPageNumber(0);
     fetchResults();
   };
 
-  changePageNumber = (event, direction) => {
+  const changePageNumber = (event, direction) => {
     event.preventDefault();
 
     if(direction === 'down') {
@@ -52,7 +52,7 @@ const NytApp = () => {
           <input type="text" name="search" onChange={(e) => setSearch(e.target.value)} required />
           <br />
           <span>Enter a start date: </span>
-          <input type="date" name="startDate" pattern="[0-9]{8}" onChange={(e) => setStateDate(e.target.value)} />
+          <input type="date" name="startDate" pattern="[0-9]{8}" onChange={(e) => setStartDate(e.target.value)} />
           <br />
           <span>Enter an end date: </span>
           <input type="date" name="endDate" pattern="[0-9]{8}" onChange={(e) => setEndDate(e.target.value)} />
