@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const PropsDemo = () => {
     const [ color, setColor ] = useState('white');
@@ -39,11 +40,11 @@ const PropsDemo = () => {
         <div className="main">
             <div className="mainDiv">
                 <div style={ styles }>
-                    <FunctionalComponent string="will this display?" function={ toggleColor } selectedStyle={ color } />
+                    <FunctionalComponent string="will this display?"  />
                     {/* challenge one answer */}
-                    <FunctionalComponent string="Props are pretty cool right?" function={ toggleBackgroundColor } selectedStyle={ backgroundColor }/>
-                    <FunctionalComponent string="You can send data from one component ..." function={ toggleBorderRadius } selectedStyle={ borderRadius } />
-                    <FunctionalComponent string=" ... to another!" function={ toggleBorderStyle } selectedStyle={ borderStyle } />
+                    <FunctionalComponent   />
+                    <FunctionalComponent  />
+                    <FunctionalComponent  />
                 </div>
             </div>
         </div>
@@ -59,6 +60,14 @@ const FunctionalComponent = (props) => {
         </div>
     );
 };
+
+
+FunctionalComponent.defaultProps = {
+    string : 'This is wild!!',
+    function : () => console.log('will this work?'),
+    selectedStyle : 'what is style?'
+}
+
 
 const TinyComponent = (props) => {
     return (
