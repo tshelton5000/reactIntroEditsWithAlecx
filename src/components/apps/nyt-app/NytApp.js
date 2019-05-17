@@ -5,7 +5,6 @@ const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'yourKeyHereabc123def456ghi789jkl0';
 
 const NytApp = () => {
-  // state
   const [ search, setSearch ] = useState('');
   const [ stateDate, setStartDate ] = useState('');
   const [ endDate, setEndDate ] = useState('');
@@ -26,7 +25,23 @@ const NytApp = () => {
   handleSubmit = (event) => {
     event.preventDefault();
     fetchResults();
-  }
+  };
+
+  changePageNumber = (event, direction) => {
+    event.preventDefault();
+
+    if(direction === 'down') {
+      if(pageNumber > 0) {
+        setPageNumber(pageNumber + 1);
+        this.fetchResults();
+      }
+    }
+
+    if(direction === 'down') {
+      setPageNumber(pageNumber - 1);
+      this.fetchResults();
+    }
+  };
 
   return (
     <div className="main">
@@ -45,7 +60,7 @@ const NytApp = () => {
         </form>
 
       {
-        results.length > 0 ? <NytResults results={ results } /> : null 
+        results.length > 0 ? <NytResults results={ results } changePageNumber={ changePageNumber } /> : null 
       }
 
       </div>
