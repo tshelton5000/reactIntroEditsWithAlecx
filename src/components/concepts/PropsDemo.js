@@ -19,7 +19,7 @@ const PropsDemo = () => {
         textAlign : textAlign
     };
 
-    const colorToggle = () => {
+    const toggleColor = () => {
         color === 'white' ? setColor('pink') : setColor('white');
     };
 
@@ -39,11 +39,11 @@ const PropsDemo = () => {
         <div className="main">
             <div className="mainDiv">
                 <div style={ styles }>
-                    <FunctionalComponent string="will this display?" function={ colorToggle }/>
+                    <FunctionalComponent string="will this display?" function={ toggleColor } selectedStyle={ color } />
                     {/* challenge one answer */}
-                    <FunctionalComponent string="Props are pretty cool right?" function= { toggleBackgroundColor } />
-                    <FunctionalComponent string="You can send data from one component ..." function={ toggleBorderRadius } />
-                    <FunctionalComponent string=" ... to another!" function={ toggleBorderStyle }/>
+                    <FunctionalComponent string="Props are pretty cool right?" function={ toggleBackgroundColor } selectedStyle={ backgroundColor }/>
+                    <FunctionalComponent string="You can send data from one component ..." function={ toggleBorderRadius } selectedStyle={ borderRadius } />
+                    <FunctionalComponent string=" ... to another!" function={ toggleBorderStyle } selectedStyle={ borderStyle } />
                 </div>
             </div>
         </div>
@@ -51,13 +51,21 @@ const PropsDemo = () => {
 };
 
 const FunctionalComponent = (props) => {
-
     return (
         <div>
             <p>{ props.string }</p>
             <button onClick={ props.function }>Toggle Style</button>
+            <TinyComponent selectedStyle={ props.selectedStyle } />
         </div>
     );
 };
+
+const TinyComponent = (props) => {
+    return (
+        <div>
+            <p>The current style is : { props.selectedStyle }</p>
+        </div>
+    )
+}
 
 export default PropsDemo;
