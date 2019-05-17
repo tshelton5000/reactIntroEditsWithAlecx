@@ -24,6 +24,7 @@ const NytApp = () => {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    setPageNumber(0);
     fetchResults();
   };
 
