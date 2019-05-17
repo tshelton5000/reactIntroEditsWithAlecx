@@ -21,7 +21,13 @@ const NytResults = (props) => {
             <a href={result.web_url}><button>Read It</button></a>
           </div>
           )
+
+
         })}
+          <div>
+            <button onClick={(e) => props.changePageNumber(e, 'down')}>Previous 10</button>
+            <button onClick={(e) => props.changePageNumber(e, 'up')}>Next 10</button>
+          </div>
       </div>
     </div>
   )
