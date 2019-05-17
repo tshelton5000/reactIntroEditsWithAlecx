@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import NytResults from './NytResults';
+
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'yourKeyHereabc123def456ghi789jkl0';
 
@@ -41,6 +43,11 @@ const NytApp = () => {
           <br />
           <button className="submit">Submit search</button>
         </form>
+
+      {
+        results.length > 0 ? <NytResults results={ results } /> : null 
+      }
+
       </div>
     </div>
   );
