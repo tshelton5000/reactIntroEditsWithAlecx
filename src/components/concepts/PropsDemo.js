@@ -17,17 +17,33 @@ const PropsDemo = () => {
         display : display,
         width : width,
         textAlign : textAlign
+    };
+
+    const colorToggle = () => {
+        color === 'white' ? setColor('pink') : setColor('white');
+    };
+
+    const toggleBackgroundColor = () => {
+        backgroundColor === 'purple' ? setBackgroundColor('black') : setBackgroundColor('purple');
+    };
+
+    const toggleBorderRadius = () => {
+        borderRadius === '5px' ? setBorderRadius('20px') : setBorderRadius('5px');
+    };
+
+    const toggleBorderStyle = () => {
+        borderStyle === 'dashed' ? setBorderStyle('double') : setBorderStyle('dashed');
     }
 
     return (
         <div className="main">
             <div className="mainDiv">
                 <div style={ styles }>
-                    <FunctionalComponent string="will this display?" />
+                    <FunctionalComponent string="will this display?" function={ colorToggle }/>
                     {/* challenge one answer */}
-                    <FunctionalComponent string="Props are pretty cool right?" />
-                    <FunctionalComponent string="You can send data from one component ..." />
-                    <FunctionalComponent string=" ... to another!" />
+                    <FunctionalComponent string="Props are pretty cool right?" function= { toggleBackgroundColor } />
+                    <FunctionalComponent string="You can send data from one component ..." function={ toggleBorderRadius } />
+                    <FunctionalComponent string=" ... to another!" function={ toggleBorderStyle }/>
                 </div>
             </div>
         </div>
@@ -39,6 +55,7 @@ const FunctionalComponent = (props) => {
     return (
         <div>
             <p>{ props.string }</p>
+            <button onClick={ props.function }>Toggle Style</button>
         </div>
     );
 };
