@@ -24,7 +24,18 @@ const NytApp = () => {
   return (
     <div className="main">
       <div className="mainDiv">
-        
+        <form onSubmit={}>
+          <span>Enter a single search term (required) : </span>
+          <input type="text" name="search" onChange={} required />
+          <br />
+          <span>Enter a start date: </span>
+          <input type="date" name="startDate" pattern="[0-9]{8}" onChange={} />
+          <br />
+          <span>Enter an end date: </span>
+          <input type="date" name="endDate" pattern="[0-9]{8}" onChange={} />
+          <br />
+          <button className="submit">Submit search</button>
+        </form>
       </div>
     </div>
   );
