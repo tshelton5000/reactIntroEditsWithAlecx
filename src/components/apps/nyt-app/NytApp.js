@@ -38,8 +38,8 @@ const NytApp = () => {
       }
     }
 
-    if(direction === 'down') {
-      setPageNumber(pageNumber - 1);
+    if(direction === 'up') {
+      setPageNumber(pageNumber + 1);
       this.fetchResults();
     }
   };

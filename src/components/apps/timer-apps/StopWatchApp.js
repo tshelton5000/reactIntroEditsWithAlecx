@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect, useRef} from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 
 // export default class Stopwatch extends Component {
 //     constructor(props){
@@ -121,10 +121,10 @@ const StopWatchApp2 = () => {
     const [laps, setLaps] = useState([]);
 
     useEffect(() => {
-        if (isRunning){
+        if (isRunning) {
             const interval = setInterval(update, 10);
 
-            return () => {clearInterval(interval)}
+            return () => { clearInterval(interval) }
         }
     })
 
@@ -135,7 +135,7 @@ const StopWatchApp2 = () => {
     }
 
     const start = () => {
-        setIsRunning(true); 
+        setIsRunning(true);
         startTimeRef.current = Date.now()
     }
 
@@ -152,12 +152,21 @@ const StopWatchApp2 = () => {
         setLaps([]);
     }
 
-    return(
+    return (
         <div>
-            <p>{time}</p>
-            {isRunning ? <button onClick={stop}>Stop</button>: <button onClick={start}>Start</button>}
+            <p>
+                {Math.floor((time / 1000) / 60).toString()} :
+                {Math.floor((time / 1000) % 60).toString()}
+            </p>
+            {isRunning ? <button onClick={stop}>Stop</button> : <button onClick={start}>Start</button>}
             {isRunning ? <button onClick={lap}>Lap</button> : <button onClick={reset}>Reset</button>}
-            {laps.map(time => <span>{time}</span>)}
+            {laps.map(time => {
+                return <span>[
+                    {Math.floor((time / 1000 ) / 60).toString()} :
+                    {Math.floor((time / 1000) % 60).toString()}
+                ]</span>
+            })
+            }
         </div>
     )
 }
